@@ -10,6 +10,22 @@
   <%= @order.address %>
 </p>
 
+<table>
+  <tr>
+  	<th>Order ID</th>
+    <th>Menu Item ID</th>
+    <th>Menu Item Name</th>
+  </tr>
+
+<% @order.line_items.each do |line_item| %>
+  <tr>
+  	<td><%= line_item.order_id%></td>
+    <td><%= line_item.menuitem_id %></td>
+    <td><%= line_item.menuitem.name %></td>
+  </tr>
+<% end %>
+</table>
+
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
