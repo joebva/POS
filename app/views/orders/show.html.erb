@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<fieldset>
+  <legend><B>Customer Info</B></legend>
 <p>
   <b>Phone number:</b>
   <%= @order.phone_number %>
@@ -9,7 +11,10 @@
   <b>Address:</b>
   <%= @order.address %>
 </p>
+</fieldset>
 
+<fieldset>
+  <legend><B>Order Info</B></legend>
 <table>
   <tr>
   	<th>Order ID</th>
@@ -25,7 +30,28 @@
   </tr>
 <% end %>
 </table>
+</fieldset>
 
+<%= link_to 'Edit Order', edit_order_path(@order) %> |
+<%= link_to 'All Orders', orders_path %>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+</BR></BR>
+<fieldset>
+  <legend><B>Menu Items</B></legend>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th></th>
+  </tr>
+
+<% @menuitems.each do |menuitem| %>
+  <tr>
+    <td><%= menuitem.name %></td>
+    <td><%= menuitem.price %></td>
+    <td><%= link_to 'Add To Order', menuitem %></td>
+    <td><%= link_to 'Description', menuitem %></td>
+  </tr>
+<% end %>
+</table>
+</fieldset>

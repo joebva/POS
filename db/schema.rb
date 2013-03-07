@@ -20,16 +20,6 @@ ActiveRecord::Schema.define(:version => 20130307184116) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "line_items", :force => true do |t|
-    t.integer  "menuitem_id"
-    t.integer  "order_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  add_index "line_items", ["menuitem_id"], :name => "index_line_items_on_menuitem_id"
-  add_index "line_items", ["order_id"], :name => "index_line_items_on_order_id"
-
   create_table "lineitems", :force => true do |t|
     t.integer  "menuitem_id"
     t.integer  "order_id"
