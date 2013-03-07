@@ -17,11 +17,11 @@
     <th>Menu Item Name</th>
   </tr>
 
-<% @order.line_items.each do |line_item| %>
+<% @order.lineitems.each do |lineitem| %>
   <tr>
-  	<td><%= line_item.order_id%></td>
-    <td><%= line_item.menuitem_id %></td>
-    <td><%= line_item.menuitem.name %></td>
+  	<td><%= lineitem.order_id%></td>
+    <td><%= lineitem.menuitem_id %></td>
+    <td><%= lineitem.menuitem.name %></td>
   </tr>
 <% end %>
 </table>

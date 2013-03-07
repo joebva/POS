@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Order ID</th>
     <th>Phone number</th>
     <th>Address</th>
     <th></th>
@@ -11,6 +12,7 @@
 
 <% @orders.each do |order| %>
   <tr>
+    <td><%= order.id %></td>
     <td><%= order.phone_number %></td>
     <td><%= order.address %></td>
     <td><%= link_to 'Show', order %></td>

@@ -1,5 +1,5 @@
 POS::Application.routes.draw do
-  resources :line_items
+  resources :lineitems
 
 
   resources :groups
