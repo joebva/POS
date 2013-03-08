@@ -1,9 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @menuitem.name %>
-</p>
+<fieldset>
+<legend><b><%= @menuitem.name %></b></legend>
 
 <p>
   <b>Price:</b>
@@ -20,6 +18,7 @@
   <%= @menuitem.group2 %>
 </p>
 
-
+<%= link_to 'Add To Order', menuitems_path %>
 <%= link_to 'Edit', edit_menuitem_path(@menuitem) %> |
 <%= link_to 'Back', menuitems_path %>
+</fieldset>

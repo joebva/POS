@@ -2,6 +2,6 @@ class Order < ActiveRecord::Base
   
   attr_accessible :address, :phone_number
   
-  has_many :lineitems
-  
+  has_many :line_items, dependent: :destroy
+
 end
