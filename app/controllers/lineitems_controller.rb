@@ -1,4 +1,8 @@
 class LineitemsController < ApplicationController
+
+  #include CurrentCart
+  #before_action :set_cart, only: [:create]
+
   # GET /lineitems
   # GET /lineitems.json
   def index
@@ -40,11 +44,15 @@ class LineitemsController < ApplicationController
   # POST /lineitems
   # POST /lineitems.json
   def create
-    @lineitem = Lineitem.new(params[:lineitem])
+    #@lineitem = Lineitem.new(params[:lineitem])
+    @cart = current_cart
+    menuitem = Menuitem.find(params[:menuitem_id])
+    @lineitem = @cart.lineitems.build
+    @lineitem.menuitem = menuitem
 
     respond_to do |format|
       if @lineitem.save
-        format.html { redirect_to @lineitem, notice: 'Lineitem was successfully created.' }
+        format.html { redirect_to @lineitem.cart, notice: 'Lineitem was successfully created.' }
         format.json { render json: @lineitem, status: :created, location: @lineitem }
       else
         format.html { render action: "new" }
