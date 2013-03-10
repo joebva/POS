@@ -49,7 +49,7 @@
   <tr>
     <td><%= menuitem.name %></td>
     <td><%= menuitem.price %></td>
-    <td><%= link_to 'Order', menuitem %></td>
+    <td><%= button_to 'Add to Order', lineitems_path(menuitem_id: menuitem) %></td>
     <td><%= link_to 'Description', menuitem %></td>
   </tr>
 <% end %>

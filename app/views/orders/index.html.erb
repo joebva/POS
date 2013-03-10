@@ -1,5 +1,7 @@
-<h1>Listing orders</h1>
+<h1>Orders</h1>
 
+<fieldset>
+<legend>Open Orders</legend>
 <table>
   <tr>
     <th>Order ID</th>
@@ -15,13 +17,13 @@
     <td><%= order.id %></td>
     <td><%= order.phone_number %></td>
     <td><%= order.address %></td>
-    <td><%= link_to 'Show', order %></td>
+    <td><%= link_to 'View', order %></td>
     <td><%= link_to 'Edit', edit_order_path(order) %></td>
-    <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Void', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
-<br />
+</fieldset>
 
 <%= link_to 'New Order', new_order_path %>
