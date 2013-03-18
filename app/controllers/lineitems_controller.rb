@@ -47,12 +47,13 @@ class LineitemsController < ApplicationController
     #@lineitem = Lineitem.new(params[:lineitem])
     @cart = current_cart
     menuitem = Menuitem.find(params[:menuitem_id])
+    order = Order.find(params[:order_id])
     @lineitem = @cart.lineitems.build
     @lineitem.menuitem = menuitem
 
     respond_to do |format|
       if @lineitem.save
-        format.html { redirect_to @lineitem.cart, notice: 'Lineitem was successfully created.' }
+        format.html { redirect_to order.id, notice: 'Lineitem was successfully created.' }
         format.json { render json: @lineitem, status: :created, location: @lineitem }
       else
         format.html { render action: "new" }

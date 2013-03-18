@@ -15,6 +15,7 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @menuitems = Menuitem.order(:name)
+    @cart = current_cart
 
     respond_to do |format|
       format.html # show.html.erb
@@ -48,6 +49,7 @@ class OrdersController < ApplicationController
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render json: @order, status: :created, location: @order }
       else
+        @cart = current_cart
         format.html { render action: "new" }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
@@ -58,12 +60,16 @@ class OrdersController < ApplicationController
   # PUT /orders/1.json
   def update
     @order = Order.find(params[:id])
+    @order.add_lineitems_from_cart(current_cart)
 
     respond_to do |format|
       if @order.update_attributes(params[:order])
+        Cart.destroy(session[:cart_id])
+        session[:cart_id] = nil
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
         format.json { head :no_content }
       else
+        @cart =  current_cart
         format.html { render action: "edit" }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
