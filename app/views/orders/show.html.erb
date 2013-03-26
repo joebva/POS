@@ -1,60 +1,56 @@
 <p id="notice"><%= notice %></p>
 
 <fieldset>
-  <legend><B>Customer Info</B></legend>
-<p>
-  <b>Phone number:</b>
-  <%= @order.phone_number %>
-</p>
+  <legend>Customer Info</legend>
+<p><b>Customer:</b></p>
+<p><b>Phone:</b></p>
+<p><b>Address:</b></p>
 
-<p>
-  <b>Address:</b>
-  <%= @order.address %>
-</p>
+
+<%= link_to 'Edit Order', edit_order_path(@order) %>
+
 </fieldset>
 
 <fieldset>
-  <legend><B>Order Info</B></legend>
+  <legend>Order #<%= @order.id %></legend>
 <table>
   <tr>
-  	<th>Order ID</th>
     <th>Menu Item ID</th>
     <th>Menu Item Name</th>
   </tr>
 
 <% @order.lineitems.each do |lineitem| %>
   <tr>
-  	<td><%= lineitem.order_id%></td>
     <td><%= lineitem.menuitem_id %></td>
     <td><%= lineitem.menuitem.name %></td>
   </tr>
 <% end %>
 </table>
+
 </fieldset>
 
 
 <fieldset>
-  <legend>Cart Info</legend>
+  <legend>Cart #<%= @cart.id %></legend>
   <table>
   <tr>
-    <th>cartID</th>
     <th>menuitemID</th>
     <th>Name</th>
   </tr>
 
   <% @cart.lineitems.each do |cartitem| %>
   <tr>
-    <td><%= cartitem.cart_id %></td>
     <td><%= cartitem.menuitem_id %></td>
     <td><%= cartitem.menuitem.name %></td>
   </tr>
   <% end %>
   </table>
 
+<%= link_to "Add Cart to Order", {:action => :update, :id => @order.id}, :method=> :put %>
+<% #link_to 'Empty cart', @cart, method: :delete, data: { confirm: 'Are you sure?' } %> 
+<%= link_to 'Empty Cart 2', cart_path(@cart, :order_id=> @order.id), :method=> :delete %>
 </fieldset>
 
-<%= link_to 'Edit Order', edit_order_path(@order) %> |
-<%= link_to "Add Cart to Order", {:action => :update, :id => @order.id}, :method=> :put %>
 
 <%= link_to 'All Orders', orders_path %>
 
@@ -72,7 +68,7 @@
   <tr>
     <td><%= menuitem.name %></td>
     <td><%= menuitem.price %></td>
-    <td><%= link_to 'Add to Cart', lineitems_path(menuitem_id: menuitem, :order_id => @order.id) %></td>
+    <td><%= link_to 'Add to Cart', lineitems_path(menuitem_id: menuitem, :order_id => @order.id), :method=> :post %></td>
     <td><%= link_to 'Description', menuitem %></td>
   </tr>
 <% end %>

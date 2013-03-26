@@ -53,7 +53,7 @@ class LineitemsController < ApplicationController
 
     respond_to do |format|
       if @lineitem.save
-        format.html { redirect_to order.id, notice: 'Lineitem was successfully created.' }
+        format.html { redirect_to order_path(order.id), notice: 'Menu item was added to cart.' }
         format.json { render json: @lineitem, status: :created, location: @lineitem }
       else
         format.html { render action: "new" }

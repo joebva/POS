@@ -66,7 +66,7 @@ class OrdersController < ApplicationController
       if @order.update_attributes(params[:order])
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+        format.html { redirect_to @order, notice: 'Cart was added to order.' }
         format.json { head :no_content }
       else
         @cart =  current_cart

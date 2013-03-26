@@ -1,4 +1,7 @@
 POS::Application.routes.draw do
+  resources :customers
+
+
   get "store/index"
 
   resources :carts
