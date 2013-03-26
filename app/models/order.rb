@@ -3,6 +3,7 @@ class Order < ActiveRecord::Base
   attr_accessible :address, :phone_number
   
   has_many :lineitems, dependent: :destroy
+  has_one :customer
 
   def add_lineitems_from_cart(cart)
     cart.lineitems.each do |item|
