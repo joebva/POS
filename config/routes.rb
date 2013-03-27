@@ -1,4 +1,7 @@
 POS::Application.routes.draw do
+  resources :categories
+
+
   resources :customers
 
 

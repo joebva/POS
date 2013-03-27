@@ -5,6 +5,9 @@ class Menuitem < ActiveRecord::Base
 
   has_and_belongs_to_many :groups
 
+  has_many :categorymenuitems
+  has_many :categories, :through => :categorymenuitems
+
   private
 
   def ensure_not_referenced_by_any_line_item
