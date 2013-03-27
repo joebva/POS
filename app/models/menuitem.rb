@@ -3,6 +3,8 @@ class Menuitem < ActiveRecord::Base
   has_many :line_items
   before_destroy :ensure_not_referenced_by_any_line_item
 
+  has_and_belongs_to_many :groups
+
   private
 
   def ensure_not_referenced_by_any_line_item
